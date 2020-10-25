@@ -1,0 +1,8 @@
+<div *ngIf="pokemon">
+    <h1 mat-dialog-title>{{pokemon.nombre}}</h1>
+    <h3>Tipo : {{pokemon.tipo}}</h3>
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="close()">OK</button>
+    </div>
+</div>
+

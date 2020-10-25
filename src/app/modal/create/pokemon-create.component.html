@@ -1,0 +1,21 @@
+<div>
+  <h1 mat-dialog-title>Nuevo Pokemon !</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="pokemon.nombre" (ngModelChange)="getPokemonName()" value="'Nombre'">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo</mat-label>
+      <mat-select placeholder="Elegir tipo" [(ngModel)]="pokemon.tipo" name="tipo">
+        <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">{{tipo.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="createPokemon()" cdkFocusInitial>OK</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+  </div>
+</div>
