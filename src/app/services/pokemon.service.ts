@@ -11,9 +11,17 @@ export class PokemonService {
   
   private endpointUrl : string = 'http://localhost:8080';
 
+  private createCallerSource = new Subject();
+  public createCaller$ = this.createCallerSource.asObservable();
+
   constructor(private http: HttpClient){
   }
-  
+
+
+  emitCreateEvent(): void {
+    this.createCallerSource.next();
+  }
+
   /** POST Crear un pokemon */
   addPokemon(pokemon: Pokemon): Observable<Pokemon> {
     let createUrl = this.endpointUrl + '/pokemons';

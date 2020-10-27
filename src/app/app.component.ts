@@ -18,6 +18,9 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog, 
     private pokemonService: PokemonService) {
+      this.pokemonService.createCaller$.subscribe(() => {
+        this.buscarPokemons();
+      });
   }
 
   openModalCreate(): void {
@@ -31,5 +34,20 @@ export class AppComponent {
   }
 
   buscarPokemons() : void{
+    this.pokemonService.findAllPokemon().subscribe(
+      res => {
+        this.pokemons = res;
+      },
+      err => {
+        console.log("Error" + err);
+      },
+      () => {
+        console.log("Finalizado");
+      }
+    );
+  }
+
+  changePokemonList() : void {
+    this.buscarPokemons();
   }
 }

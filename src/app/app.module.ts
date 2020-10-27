@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -30,6 +30,7 @@ import { PokemonListComponent } from './list/pokemon-list.component';
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
     MatTableModule,
     MatButtonModule,
@@ -46,9 +47,6 @@ import { PokemonListComponent } from './list/pokemon-list.component';
     PokemonViewComponent,
     PokemonListComponent
   ],
-  // exports: [
-  //   PokemonList
-  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

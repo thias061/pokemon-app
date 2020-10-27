@@ -4,6 +4,7 @@ import { Pokemon } from '../models/pokemon.model.';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { PokemonViewComponent } from '../modal/view/pokemon-view.component';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'pokemon-list',
@@ -12,12 +13,22 @@ import { PokemonViewComponent } from '../modal/view/pokemon-view.component';
 })
 
 export class PokemonListComponent {
+  @Input() listPokemon;
+  @Output() numberChangeCaller = new EventEmitter();
+
   displayedColumns: string[] = ['position', 'name', 'type', 'view', 'delete'];
-  pokemons: Pokemon[];
   
   constructor(public dialog: MatDialog,
     private pokemonService: PokemonService) {
 
+  }
+
+  supprimirPokemon(pokemon: Pokemon): void {
+    this.pokemonService.deletePokemon(pokemon.id).subscribe(
+      () => {
+        console.log("Pokemon eliminado");
+        this.numberChangeCaller.emit();
+      });
   }
 
   viewPokemon(pokemon: Pokemon) : void{
@@ -29,6 +40,12 @@ export class PokemonListComponent {
 
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
+    });
+  }
+
+  buscarPokemons(): void {
+    this.pokemonService.findAllPokemon().subscribe(res => {
+      this.listPokemon = res;
     });
   }
 }

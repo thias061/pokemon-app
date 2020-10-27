@@ -1,4 +1,4 @@
-<mat-table *ngIf="pokemons.length > 0" [dataSource]="pokemons" class="mat-elevation-z8">
+<mat-table *ngIf="listPokemon.length > 0" [dataSource]="listPokemon" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -29,14 +29,15 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> Supprimir </th>
       <td mat-cell *matCellDef="let pokemon">
-        <button mat-mini-fab>
+        <button mat-mini-fab (click)="supprimirPokemon(pokemon)">
           <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </td>
     </ng-container>
-
-
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let pokemon; columns: displayedColumns;"></tr>
+    <tr [ngClass]="{'gato' : pokemon.tipo === 'GATO', 
+      'lagarto' : pokemon.tipo === 'LAGARTO',
+      'rata' : pokemon.tipo === 'RATA',
+      'camaleon': pokemon.tipo === 'CAMALEON'}" mat-row *matRowDef="let pokemon; columns: displayedColumns;"></tr>
   </mat-table>
