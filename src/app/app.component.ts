@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './models/pokemon.model.';
-import { PokemonCreateComponent } from './modal/create/pokemon-create.component';
-import { PokemonListComponent } from './list/pokemon-list.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 
 @Component({
   selector: 'app-root',

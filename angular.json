@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-app2": {
+    "pokemon-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-app2",
+            "outputPath": "dist/pokemon-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -44,7 +44,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -67,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-app2:build"
+            "browserTarget": "pokemon-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-app2:build:production"
+              "browserTarget": "pokemon-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-app2:build"
+            "browserTarget": "pokemon-app:build"
           }
         },
         "test": {
@@ -116,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "my-app2:serve"
+            "devServerTarget": "pokemon-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-app2:serve:production"
+              "devServerTarget": "pokemon-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "my-app2"
+  "defaultProject": "pokemon-app"
 }

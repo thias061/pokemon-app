@@ -1,52 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
+import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { PokemonCreateComponent } from './modal/create/pokemon-create.component';
-import { PokemonViewComponent } from './modal/view/pokemon-view.component';
-import { PokemonListComponent } from './list/pokemon-list.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PokemonCreateComponent,
+    PokemonListComponent,
     PokemonViewComponent,
-    PokemonListComponent
+    PokemonCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule,
+    MatDialogModule,
     MatTableModule,
+    MatSelectModule,
     MatButtonModule,
-    HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule
   ],
-  providers: [
-    {
-      provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false }
-    }],
-
-  entryComponents: [
-    PokemonCreateComponent,
-    PokemonViewComponent,
-    PokemonListComponent
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
