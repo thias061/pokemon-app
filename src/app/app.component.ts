@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './models/pokemon.model.';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,27 @@ export class AppComponent {
 
   title = 'Pokemon App';
   pokemons: Pokemon[] = [];
+  subscr: Subscription;
 
   constructor(public dialog: MatDialog, 
     private pokemonService: PokemonService) {
-      this.pokemonService.createCaller$.subscribe(() => {
+      this.subscr = this.pokemonService.createCaller$.subscribe(() => {
         this.buscarPokemons();
       });
   }
 
-  openModalCreate(): void {
-  //   const dialogRef = this.dialog.open(PokemonCreateComponent, {
-  //     width: '250px',
-  //   });
+  ngOnDestroy(){
+    this.subscr.unsubscribe();
+  }
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   });
+  openModalCreate(): void {
+    // const dialogRef = this.dialog.open(PokemonCreateComponent, {
+    //   width: '250px',
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
   }
 
   buscarPokemons() : void{

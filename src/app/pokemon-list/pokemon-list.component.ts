@@ -1,4 +1,4 @@
-import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from '../models/pokemon.model.';
 import { MatTable } from '@angular/material/table';
@@ -20,13 +20,16 @@ export class PokemonListComponent {
   
   constructor(public dialog: MatDialog,
     private pokemonService: PokemonService) {
+  }
 
+  ngOnChanges(changes: SimpleChanges){
+    console.log(changes);
   }
 
   supprimirPokemon(pokemon: Pokemon): void {
     this.pokemonService.deletePokemon(pokemon.id).subscribe(
       () => {
-        console.log("Pokemon eliminado");
+        console.log("Pokemon éliminé");
         this.numberChangeCaller.emit();
       });
   }

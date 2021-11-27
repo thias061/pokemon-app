@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Pokemon } from 'src/app/models/pokemon.model.';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'pokemon-view',
@@ -13,15 +14,20 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonViewComponent {
 
   pokemon: Pokemon;
+  subscr: Subscription;
 
   constructor(
     public dialogRef: MatDialogRef<PokemonViewComponent>,
     private pokemonService: PokemonService,
     @Inject(MAT_DIALOG_DATA) public id: string) {
       
-      this.pokemonService.findPokemonById(id).subscribe(value => {
+      this.subscr = this.pokemonService.findPokemonById(id).subscribe(value => {
         this.pokemon = value;
       })
+  }
+
+  ngOnDestroy(){
+    this.subscr.unsubscribe();
   }
 
   close(): void {
