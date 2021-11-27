@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
-import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +20,6 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent,
     PokemonListComponent,
     PokemonViewComponent,
-    PokemonCreateComponent
   ],
   imports: [
     BrowserModule,

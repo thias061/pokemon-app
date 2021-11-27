@@ -3,7 +3,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './models/pokemon.model.';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
-import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 
 @Component({
   selector: 'app-root',
@@ -24,13 +23,13 @@ export class AppComponent {
   }
 
   openModalCreate(): void {
-    const dialogRef = this.dialog.open(PokemonCreateComponent, {
-      width: '250px',
-    });
+  //   const dialogRef = this.dialog.open(PokemonCreateComponent, {
+  //     width: '250px',
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
   }
 
   buscarPokemons() : void{
