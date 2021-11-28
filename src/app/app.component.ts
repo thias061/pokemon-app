@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './models/pokemon.model.';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
   @ViewChild(PokemonListComponent) listComponent : PokemonListComponent;
-
+  
   title = 'Pokemon App';
   pokemons: Pokemon[] = [];
   subscr: Subscription;
@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(public dialog: MatDialog, 
     private pokemonService: PokemonService) {
       this.subscr = this.pokemonService.createCaller$.subscribe(() => {
-        this.buscarPokemons();
+        this.listComponent.buscarPokemons();
       });
   }
 
