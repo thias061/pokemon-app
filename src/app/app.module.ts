@@ -14,12 +14,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { PokemonCreateComponent } from './pokemon-create/pokemon-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
     PokemonViewComponent,
+    PokemonCreateComponent,
   ],
   imports: [
     BrowserModule,

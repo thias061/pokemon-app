@@ -23,7 +23,7 @@ export class PokemonViewComponent {
       
       this.subscr = this.pokemonService.findPokemonById(id).subscribe(value => {
         this.pokemon = value;
-      })
+      });      
   }
 
   ngOnDestroy(){

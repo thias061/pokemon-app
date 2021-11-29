@@ -1,0 +1,68 @@
+<!-- Ejemplo 1-->
+<div *ngIf="isFormGroup === false">
+    <h1 mat-dialog-title>Nuevo Pokemon !</h1>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [formControl]="nameFormControl" [(ngModel)]="pokemon.nombre" (ngModelChange)="getPokemonName()" value="'Nombre'">
+      </mat-form-field>
+      <mat-error *ngIf="nameFormControl.touched && nameFormControl.hasError('required')">
+        El nombre es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.touched && nameFormControl.hasError('pattern')">
+        El formato es <strong>incorrecto</strong>
+      </mat-error>
+    </div>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo</mat-label>
+        <mat-select placeholder="Elegir tipo" [formControl]="typeFormControl" [(ngModel)]="pokemon.tipo" name="tipo">
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">{{tipo.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error *ngIf="typeFormControl.touched && typeFormControl.hasError('required')">
+        El tipo es <strong>obligatorio</strong>
+      </mat-error>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="createPokemon()" cdkFocusInitial>OK</button>
+      <button mat-raised-button (click)="cancel()">Cancelar</button>
+    </div>
+  </div>
+  <!-- Ejemplo 2-->
+  <div *ngIf="isFormGroup === true"> 
+    <form [formGroup]="createForm">
+      <h1 mat-dialog-title>Nouveau Pokemon !</h1>
+      <div mat-dialog-content>
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name" [(ngModel)]="pokemon.nombre" value="'Nombre'">
+        </mat-form-field>
+        <mat-error *ngIf="submitted && createForm.controls['name'].errors && createForm.controls['name'].errors.required">
+          Le nom est <strong>obligatoire</strong>
+        </mat-error>
+        <mat-error *ngIf="submitted && createForm.controls['name'].hasError('pattern')">
+          El formato es <strong>incorrecto</strong>
+        </mat-error>
+        <mat-error *ngIf="submitted && createForm.controls['name'].hasError('maxlength')">
+          Taille <strong>max</strong>
+        </mat-error>
+      </div>
+      <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <mat-select placeholder="Elegir tipo" formControlName="type" [(ngModel)]="pokemon.tipo" name="tipo">
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">{{tipo.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="submitted && createForm.controls['type'].errors && createForm.controls['type'].errors.required">
+         Le type est <strong>obligatoire</strong>
+        </mat-error>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-raised-button (click)="createPokemon()" cdkFocusInitial>OK</button>
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+      </div>
+    </form>
+  
+  </div>
